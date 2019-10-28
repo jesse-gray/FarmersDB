@@ -1,23 +1,27 @@
 --Create SQL views to produce the following
---Farmers Club members list showing points and rewards earnt, for a given store
-CREATE VIEW club_member_master AS
-SELECT customer.customer_id, CONCAT(customer_given_name, ' ', customer_family_name) AS "Customer Name", club_card_points, club_card_reward_count
+--Farmers Club members list showing points and rewards earnt, for a given city (City here is Napier)
+CREATE VIEW club_member_view AS
+SELECT customer.customer_id, customer_given_name, customer_family_name, club_card_points, club_card_reward_count
 FROM club_card
 JOIN customer
-ON club_card.customer_id = customer.customer_id;
+ON club_card.customer_id = customer.customer_id
+JOIN address
+on customer.customer_shipping_address = address.address_id
+WHERE address_city = 'Napier';
 
---Comprehensive product list for given product category (actual products from Farmers), showing all current prices for each product
-CREATE VIEW product_list_master AS
-SELECT type_name, product_id, CONCAT(brand_name, ' ', product_name) AS Product, product_price
+--Comprehensive product list for given product type (actual products from Farmers), showing all current prices for each product (type here is Bath Care)
+CREATE VIEW product_list_view AS
+SELECT type_name, product_id, brand_name, product_name, product_price
 FROM product
 JOIN product_type
 ON product.product_type_id = product_type.type_id
 JOIN brand
-ON product.brand_id = brand.brand_id;
+ON product.brand_id = brand.brand_id
+WHERE product_type.type_name = 'Bath Care';
 
---Stock on Hand for a given store
-CREATE VIEW stock_on_hand_master AS
-SELECT store_name, department_name, type_name, CONCAT(brand_name, ' ', product_name) AS Product, product_quantity
+--Stock on Hand for a given store (Store here is Napier)
+CREATE VIEW stock_on_hand_view AS
+SELECT store_name, department_name, type_name, brand_name, product_name, product_quantity
 FROM Product
 JOIN inventory
 ON product.product_id = inventory.product_id
@@ -29,24 +33,33 @@ JOIN department
 ON product_type.department_id = department.department_id
 JOIN brand
 ON product.brand_id = brand.brand_id
+WHERE store.store_name = 'Napier'
 ORDER BY department_name, type_name, brand_name, product_name;
 
---A sales invoice for a given customer
-CREATE VIEW invoice_master AS
-SELECT store_name AS Store,
-CONCAT (store_address.address_unit_number, ' ', store_address.address_street_number, ' ', store_address.address_street_name) AS "Store Address",
-CONCAT(store_address.address_city, ' ', store_address.address_postal_code) AS "Store City",
-store_address.address_country AS "Store Country",
+--A sales invoice for a given customer (Invoice ID here is 4)
+CREATE VIEW invoice_view AS
+SELECT store_name,
+store_address.address_unit_number AS store_unit_number,
+store_address.address_street_number AS store_street_number,
+store_address.address_street_name AS store_street_name,
+store_address.address_city AS store_city,
+store_address.address_postal_code AS store_postal_code,
+store_address.address_country AS store_country,
 store_phone_number,
 invoice_creation_date,
 invoice_id,
 customer.customer_id, 
-CONCAT(customer_given_name, ' ', customer_family_name) AS "Customer Name", 
-CONCAT(customer_address.address_unit_number, ' ', customer_address.address_street_number, ' ', customer_address.address_street_name) AS "Customer Address",
-CONCAT(customer_address.address_city, ' ', customer_address.address_postal_code)AS "Customer City",
-customer_address.address_country AS "Customer Country",
+customer_given_name,
+customer_family_name, 
+customer_address.address_unit_number AS customer_unit_number,
+customer_address.address_street_number AS customer_street_number, 
+customer_address.address_street_name AS customer_street_name,
+customer_address.address_city AS customer_city,
+customer_address.address_postal_code AS customer_postal_code,
+customer_address.address_country AS customer_country,
 customer_phone_number,
-CONCAT(brand_name, ' ', product_name) AS "Product",
+brand_name,
+product_name,
 line_quantity,
 product_price,
 order_line_total,
@@ -71,4 +84,5 @@ ON invoice.store_id = store.store_id
 JOIN address store_address
 ON customer.customer_billing_address = store_address.address_id
 JOIN address customer_address
-ON store.store_address_id = customer_address.address_id;
+ON store.store_address_id = customer_address.address_id
+WHERE invoice.invoice_id = 63;

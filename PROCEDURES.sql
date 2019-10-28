@@ -5,7 +5,7 @@ CREATE OR REPLACE PROCEDURE apply_discount(_discount_amount INT, _department_nam
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    --Apply discount to category for date specified
+    --Apply discount for date specified
     INSERT INTO discount(discount_amount, discount_start_date, discount_end_date)
     VALUES (_discount_amount, _start_date, _end_date);
     COMMIT;
@@ -13,9 +13,6 @@ BEGIN
     --Apply discount to given category
     INSERT INTO department_discount(department_id, discount_id)
     VALUES ((SELECT department_id FROM department WHERE department_name = _department_name), (SELECT discount_id FROM discount WHERE discount_amount = _discount_amount AND discount_start_date = _start_date AND discount_end_date = _end_date));
-
-    --Update products?
-
 END;
 $$;
 
@@ -31,7 +28,7 @@ BEGIN
     VALUES (date('now'), 0, 0, -1 * (SELECT product_price FROM product WHERE product_name = _product_name), 'Returned', (SELECT order_id FROM invoice WHERE invoice_id = _invoice_id), (SELECT store_id FROM invoice WHERE invoice_id = _invoice_id));
     COMMIT;
 
-    --Update stock available
+    --Update stock available for the relevant inventory
     UPDATE inventory
     SET product_quantity = inventory.product_quantity + _quantity
     FROM inventory AS t1

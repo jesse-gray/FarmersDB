@@ -113,8 +113,8 @@ CREATE TABLE employee (
 	employee_phone_number	varchar(11)		NOT NULL,
 	employee_date_of_birth	date			NOT NULL,
 	employee_gender			varchar(10)		NOT NULL,
-	employee_salary			money			NOT NULL,
-	employee_ird_no			char(11)			NOT NULL,
+	employee_salary			decimal(18, 2)	NOT NULL,
+	employee_ird_no			char(11)		NOT NULL,
 	employee_bank_account	char(19)		NOT NULL,
 	employee_position_id	int				NOT NULL		REFERENCES employee_position(employee_position_id),
 	employee_address_id		int				NOT NULL		REFERENCES address(address_id),
@@ -241,7 +241,7 @@ CREATE TABLE product (
 	product_id				int				GENERATED ALWAYS AS IDENTITY,
 	product_name			varchar(155)		NOT NULL,
 	product_description		text,
-	product_price			money			NOT NULL,
+	product_price			decimal(18, 2)			NOT NULL,
 	product_sku				varchar(10),
 	product_image 			bytea,
 	product_discount		float,
@@ -334,7 +334,7 @@ CREATE TABLE "order"(
 	order_id			int				GENERATED ALWAYS AS IDENTITY,
 	order_placed_date	date			NOT NULL,
 	order_shipped_date	date,
-	order_total			money			NOT NULL,
+	order_total			decimal(18, 2)			NOT NULL,
 	customer_id			int				NOT NULL			REFERENCES customer(customer_id),
 	CONSTRAINT pk_order_id PRIMARY KEY (order_id) 
 )WITH (
@@ -356,7 +356,7 @@ CREATE TABLE order_line (
 	order_line_id		int 		GENERATED ALWAYS AS IDENTITY,
 	order_id			int			NOT NULL		REFERENCES "order"(order_id),
 	line_id				int			NOT NULL		REFERENCES line(line_id),
-	order_line_total	money			NOT NULL,
+	order_line_total	decimal(18, 2)			NOT NULL,
 	CONSTRAINT pk_order_line_id PRIMARY KEY (order_line_id) 
 )WITH (
 	OIDS=FALSE
@@ -366,9 +366,9 @@ CREATE TABLE order_line (
 CREATE TABLE invoice (
 	invoice_id				int				GENERATED ALWAYS AS IDENTITY,
 	invoice_creation_date	date			NOT NULL,
-	invoice_shipping		money			NOT NULL,
+	invoice_shipping		decimal(18, 2)			NOT NULL,
 	invoice_tax				float			NOT NULL,
-	invoice_total			money			NOT NULL,
+	invoice_total			decimal(18, 2)			NOT NULL,
 	invoice_status			varchar(10)		NOT NULL,
 	order_id				int				NOT NULL			REFERENCES "order"(order_id),
 	store_id				int				NOT NULL			REFERENCES store(store_id),
@@ -444,7 +444,7 @@ CREATE TABLE mastercard (
 CREATE TABLE gift_card (
 	gift_card_id			int			GENERATED ALWAYS AS IDENTITY,
 	gift_card_expiry_date	date		NOT NULL,
-	gift_card_total			money		NOT NULL,
+	gift_card_total			decimal(18, 2)		NOT NULL,
 	gift_card_is_enabled	bool		NOT NULL,
 	customer_recipient_id	int			NOT NULL			REFERENCES customer(customer_id),
 	customer_donor_id		int			NOT NULL			REFERENCES customer(customer_id),
@@ -454,12 +454,12 @@ CREATE TABLE gift_card (
 );
 
 --CREATE REUTRN table
-CREATE TABLE return (
-	return_id		int		GENERATED ALWAYS AS IDENTITY,
-	return_date		date	NOT NULL,
-	order_line_id	int		NOT NULL 		REFERENCES order_line(order_line_id),
-	order_id		int 	NOT NULL		REFERENCES "order"(order_id),
-	CONSTRAINT pk_return_id PRIMARY KEY (return_id)
-)WITH (
-	OIDS=FALSE
-);
+-- CREATE TABLE return (
+-- 	return_id		int		GENERATED ALWAYS AS IDENTITY,
+-- 	return_date		date	NOT NULL,
+-- 	order_line_id	int		NOT NULL 		REFERENCES order_line(order_line_id),
+-- 	order_id		int 	NOT NULL		REFERENCES "order"(order_id),
+-- 	CONSTRAINT pk_return_id PRIMARY KEY (return_id)
+-- )WITH (
+-- 	OIDS=FALSE
+-- );
