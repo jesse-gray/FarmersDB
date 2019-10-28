@@ -8,7 +8,7 @@ VALUES  ('Commercial'),
 --Address Data
 INSERT INTO address (address_unit_number, address_street_number, address_street_name, address_suburb, address_city, address_country, address_postal_code, address_type)
 VALUES  
-        --Napier 1-7(7)
+        --Napier
         (NULL,239,'Eggendart Way','Napier South','Napier','New Zealand','4104',2),
         (NULL,106,'Kinsman Drive','Napier South','Napier','New Zealand','4183',2),
         (NULL,130,'Namekagon Place','Greenmeadows','Napier','New Zealand','4104',2),
@@ -16,7 +16,7 @@ VALUES
         (NULL,222,'Londonderry Drive','Hospital Hill','Napier','New Zealand','4112',2),
         (NULL,54,'Twin Pines Junction','Westshore','Napier','New Zealand','4110',2),
         (NULL,51,'Clyde Gallagher Place','Westshore','Napier','New Zealand','4110',2),
-        --Auckland 8-14(7)
+        --Auckland
         (NULL,36,'Tony Way','Schnapper Rock','Auckland','New Zealand','0612',2),
         (NULL,24,'Hooker Plaza','Sandringham','Auckland','New Zealand','0793',2),
         (6,63,'Morrow Way','Mechanics Bay','Auckland','New Zealand','1072',2),
@@ -24,7 +24,7 @@ VALUES
         (NULL,56,'Hoepker Court','Mairangi Bay','Auckland','New Zealand','1021',2),
         (NULL,192,'Kenwood Center','Greenhithe','Auckland','New Zealand','2014',2),
         (NULL,181,'Pawling Center','Forrest Hill','Auckland','New Zealand','2571',2),
-        --Hastings 15-21(7)
+        --Hastings
         (NULL,147,'Bultman Drive','Longlands','Hastings','New Zealand','4122',2),
         (NULL,47,'Anniversary Plaza','Raureka','Hastings','New Zealand','4122',2),
         (NULL,198,'Mcbride Crossing','Camberley','Hastings','New Zealand','4180',2),
@@ -32,7 +32,7 @@ VALUES
         (NULL,218,'Killdeer Trail','Mayfair','Hastings','New Zealand','4180',2),
         (NULL,147,'Lawn Park','Frimley','Hastings','New Zealand','4180',2),
         (NULL,116,'Manitowish Hill','Parkvale','Hastings','New Zealand','4172',2),
-        --Napier 22-38(17)
+        --Napier
         (NULL,103,'Troy Pass','Hospital Hill','Napier','New Zealand','4112',2),
         (NULL,95,'Brickson Park Trail','Ahuriri','Napier','New Zealand','4112',2),
         (NULL,186,'Hanover Lane','Maraenui','Napier','New Zealand','4182',2),
@@ -50,7 +50,7 @@ VALUES
         (NULL,96,'Drewry Circle','Pandora','Napier','New Zealand','4104',2),
         (NULL,171,'Sherman Road','Greenmeadows','Napier','New Zealand','4182',2),
         (NULL,165,'Surrey Road','Pirimai','Napier','New Zealand','4112',2),
-        --Auckland 39-57(19)
+        --Auckland
         (NULL,164,'Spohn Circle','Glen Innes','Auckland','New Zealand','1072',2),
         (NULL,199,'Sundown Pass','Te Atatu Peninsula','Auckland','New Zealand','1011',2),
         (NULL,156,'Red Cloud Point','Mount Wellington','Auckland','New Zealand','0781',2),
@@ -70,7 +70,7 @@ VALUES
         (NULL,22,'Farwell Point','Hillsborough','Auckland','New Zealand','2585',2),
         (1,53,'Steensland Parkway','Shamrock Park','Auckland','New Zealand','1024',2),
         (NULL,173,'Sachs Drive','Royal Oak','Auckland','New Zealand','1010',2),
-        --Hastings 58-73(16)
+        --Hastings
         (NULL,101,'Fremont Plaza','Frimley','Hastings','New Zealand','4130',2),
         (NULL,236,'Vidon Court','Longlands','Hastings','New Zealand','4120',2),
         (NULL,23,'Bowman Plaza','Raureka','Hastings','New Zealand','4180',2),
@@ -87,7 +87,7 @@ VALUES
         (NULL,10,'Heffernan Place','Mahora','Hastings','New Zealand','4120',2),
         (NULL,70,'Old Gate Place','Camberley','Hastings','New Zealand','4180',2),
         (NULL,144,'Commercial Place','Woolwich','Hastings','New Zealand','4172',2),
-        --Napier 74-141(68)        
+        --Napier      
         (NULL,181,'Fair Oaks Alley','Onekawa','Napier','New Zealand','4104',2),
         (NULL,34,'Towne Court','Hospital Hill','Napier','New Zealand','4104',2),
         (NULL,123,'Upham Road','Pirimai','Napier','New Zealand','4182',2),
@@ -156,7 +156,7 @@ VALUES
         (NULL,146,'Aberg Plaza','Napier South','Napier','New Zealand','4110',2),
         (NULL,144,'Clove Park','Onekawa','Napier','New Zealand','4183',2),
         (NULL,166,'Fulton Terrace','Poraiti','Napier','New Zealand','4183',2),
-        --Auckland 142-217(76)
+        --Auckland
         (NULL,221,'Elka Place','Hauraki','Auckland','New Zealand','1041',2),
         (NULL,39,'Holmberg Way','Hillcrest','Auckland','New Zealand','1042',2),
         (NULL,162,'Namekagon Alley','Belmont','Auckland','New Zealand','2016',2),
@@ -233,7 +233,7 @@ VALUES
         (NULL,248,'Artisan Trail','Murrays Bay','Auckland','New Zealand','0627',2),
         (NULL,61,'Fulton Plaza','Forrest Hill','Auckland','New Zealand','1051',2),
         (NULL,136,'Orin Drive','Massey','Auckland','New Zealand','1061',2),
-        --Hastings 218-280(63)
+        --Hastings
         (NULL,107,'Buhler Place','Woolwich','Hastings','New Zealand','4130',2),
         (NULL,54,'Schlimgen Plaza','Longlands','Hastings','New Zealand','4180',2),
         (NULL,184,'Forest Circle','Raureka','Hastings','New Zealand','4172',2),
@@ -414,13 +414,7 @@ VALUES  (1, 1),
         (3, 4),
         (3, 5),
         (3, 6),
-        (3, 7);        
-
--- --Sale table
--- INSERT INTO sale (sale_name, sale_description, sale_start_date, sale_end_date, department_id)
--- VALUES  ('End of Season', 'New styles added.', '2019-09-01', '2019-09-30', '2'),
---         ('End of Season', 'New styles added.', '2019-09-01', '2019-09-30', '3'),
---         ('End of Season', 'New styles added.', '2019-09-01', '2019-09-30', '4');
+        (3, 7);
           
 --Event data
 INSERT INTO event (event_name, event_description, event_start_date, event_end_date, event_start_time, store_id)
@@ -726,7 +720,7 @@ VALUES  --Managers
         ('Dore','Vercruysse','2013/11/16','vercruysse1o@foxnews.com',0230514888,'1971/01/16','Female',43929,'352-097-909','05-7896-5871717-030',1,278,'67'),
         ('Sansone','Tison','2017/08/28','tison1p@nydailynews.com',0277316678,'1971/08/08','Female',48473,'399-499-376','07-1802-7390793-000',1,279,'64'),
         ('Edvard','Gerrit','2007/07/02','gerrit1q@opensource.org',0222787644,'1982/12/29','Female',54867,'692-847-057','06-2873-6190543-070',1,280,'64');
-
+        --Sorry if you have to mark all of this, got a bit carried away
 
 --Department Employee data
 INSERT INTO department_employee (employee_id, store_department_id)
@@ -1906,8 +1900,8 @@ VALUES  --Napier
         (NULL,'Meta','Yaakov','0200883038','yaakov12@addthis.com','1943-07-25','syLuaYqG',NULL,337,337),
         ('Ms','Jerrilee','Rabley','0277219290','rabley13@blogspot.com','1982-06-21','AbRmVoy','Male',338,348);     
 
---Order Data
-INSERT INTO "order"(order_placed_date, order_shipped_date, order_total,  customer_id)
+--Order Data (total set to zero for now, changed later)
+INSERT INTO "order"(order_placed_date, order_shipped_date, order_total, customer_id)
 VALUES  ('2018-10-15','2018-10-16',0,2),
         ('2019-05-19','2019-05-20',0,18),
         ('2019-05-18','2019-05-18',0,39),
@@ -2294,7 +2288,7 @@ VALUES  --Orders
         (1,21),
         (1,5);
 
---Order Line data
+--Order Line data (total set to zero for now, changed later)
 INSERT INTO order_line(order_id, line_id, order_line_total)
 VALUES  (3,1,0),
         (68,2,0),
@@ -2533,7 +2527,7 @@ BEGIN
 END
 $do$;
 
---Invoice data
+--Invoice data  (creation date changed later and total set to zero for now, changed later)
 INSERT INTO invoice(invoice_creation_date, invoice_shipping, invoice_tax, invoice_total, invoice_status, order_id, store_id)
 VALUES  ('2019-01-01',1.0,15,0,'Shipped',1,3),
         ('2019-01-01',13.74,15,0,'Shipped',2,3),
@@ -2616,7 +2610,7 @@ VALUES  ('2019-01-01',1.0,15,0,'Shipped',1,3),
         ('2019-01-01',14.71,15,0,'Shipped',79,2),
         ('2019-01-01',13.11,15,0,'Shipped',80,2);
 
---Set Creation Date for all invoices
+--Set Creation Date for all invoices to match orders
 DO
 $do$
 DECLARE
@@ -3067,11 +3061,3 @@ VALUES  ('2021-12-02',61.91,false,17,29),
         ('2022-08-29',83.72,true,7,16),
         ('2020-06-28',59.83,true,9,7),
         ('2019-12-16',72.85,true,38,33);
-
---Return data
--- INSERT INTO return(return_date, order_line_id, order_id)
--- VALUES  ('2018-11-18',64,53),
---         ('2019-01-26',84,34),
---         ('2019-05-06',6,73),
---         ('2019-03-01',156,15),
---         ('2019-07-08',149,1);
