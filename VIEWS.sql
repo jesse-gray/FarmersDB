@@ -1,7 +1,7 @@
 --Create SQL views to produce the following
 --Farmers Club members list showing points and rewards earnt, for a given city (City here is Napier)
 CREATE VIEW club_member_view AS
-SELECT customer.customer_id, customer_given_name, customer_family_name, club_card_points, club_card_reward_count
+SELECT address_city, customer.customer_id, customer_given_name, customer_family_name, club_card_points, club_card_reward_count
 FROM club_card
 JOIN customer
 ON club_card.customer_id = customer.customer_id
