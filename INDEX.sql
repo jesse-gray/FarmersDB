@@ -130,7 +130,3 @@ ON gift_card(gift_card_expiry_date);
 
 CREATE INDEX idx_gift_card_is_enabled
 ON gift_card(gift_card_is_enabled);
-
---Return indices
--- CREATE INDEX idx_return_date
--- ON return(return_date);

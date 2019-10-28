@@ -1,5 +1,7 @@
 --Create database
---CREATE DATABASE farmersDB TEMPLATE template0;
+--CREATE DATABASE farmersdb TEMPLATE template0;
+--This Create file assumes there is an existing database called farmersdb.
+--Constraints are also created in this file and as such, there is no seperate CONSTRAINTS.sql file
 
 --Drop all tables to start fresh
 DROP SCHEMA public CASCADE;
@@ -65,20 +67,6 @@ CREATE TABLE store_department (
 )WITH ( 
   OIDS=FALSE 
 );
-
--- --Create SALE table
--- CREATE TABLE sale (
--- 	sale_id				int				GENERATED ALWAYS AS IDENTITY,
--- 	sale_name			varchar(55)		NOT NULL,
--- 	sale_description	text			NOT NULL,
--- 	sale_start_date		date			NOT NULL,
--- 	sale_end_date		date			NOT NULL,
--- 	department_id		int				NOT NULL		REFERENCES department(department_id),    	
--- 	CONSTRAINT pk_sale_id PRIMARY KEY (sale_id) 
--- )WITH (
--- 	OIDS=FALSE
--- );
-
 
 --Create EVENT table
 CREATE TABLE event (
@@ -452,14 +440,3 @@ CREATE TABLE gift_card (
 )WITH (
 	OIDS=FALSE
 );
-
---CREATE REUTRN table
--- CREATE TABLE return (
--- 	return_id		int		GENERATED ALWAYS AS IDENTITY,
--- 	return_date		date	NOT NULL,
--- 	order_line_id	int		NOT NULL 		REFERENCES order_line(order_line_id),
--- 	order_id		int 	NOT NULL		REFERENCES "order"(order_id),
--- 	CONSTRAINT pk_return_id PRIMARY KEY (return_id)
--- )WITH (
--- 	OIDS=FALSE
--- );
