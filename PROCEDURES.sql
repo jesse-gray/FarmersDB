@@ -1,7 +1,6 @@
 --Create two stored procedures or functions to
---Apply a discount of a specified price for all the products in a selected category for a specified date range
+--Apply a discount of a specified price for all the products in a selected department for a specified date range
 CREATE OR REPLACE PROCEDURE apply_discount(_discount_amount INT, _department_name VARCHAR, _start_date DATE, _end_date DATE)
-
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -10,7 +9,7 @@ BEGIN
     VALUES (_discount_amount, _start_date, _end_date);
     COMMIT;
 
-    --Apply discount to given category
+    --Apply discount to given department
     INSERT INTO department_discount(department_id, discount_id)
     VALUES ((SELECT department_id FROM department WHERE department_name = _department_name), (SELECT discount_id FROM discount WHERE discount_amount = _discount_amount AND discount_start_date = _start_date AND discount_end_date = _end_date));
 END;
@@ -19,7 +18,6 @@ $$;
 
 --Accept a product return, including storing the relevant invoice and updating stock on hand
 CREATE OR REPLACE PROCEDURE item_return(_invoice_id INT, _product_name VARCHAR, _quantity INT)
-
 LANGUAGE plpgsql
 AS $$
 BEGIN
